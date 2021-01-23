@@ -1,0 +1,19 @@
+To be created and installed :
+- Dashboard web de Kubernetes : OK
+- Ingress Controller #allows to read data properly
+// Gère l'accès externe aux services dans un cluster. C'est ce qui redirige vers le container Nginx
+- Nginx : 80 && 443
+- FTPS : 21
+- Load Balancer (metalLB) #permet de rediriger l'envoi de datas sur plusieurs serveurs pour augmenter la performance et éviter des crashs
+
+- Wordpress : 5050
+- PhpMyAdmin : 5000
+- MySQL
+
+- InfluxDB #get data and analytics
+- Grafana : 3000 #visualize analytics
+- Telegraf 
+!! Il faut créer un dashboard par container pour InfluxDB et Grafana
+!! en cas de crash ou d'arrêt d'un des deux conteneurs de BdD, il faut s'assurer que les BdD puissent persister et ne soient pas perdues. En cas de suppression, les volumes où la data est sauvegardée doivent persister.
+!! Nginx doit être acessible en SSH
+>>> Chaque container doit pouvoir redémarrer automatiquement en cas de crash ou d'arrêt

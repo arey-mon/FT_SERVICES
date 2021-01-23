@@ -1,0 +1,4 @@
+FROM Alpine
+USER root
+
+EXPOSE 443

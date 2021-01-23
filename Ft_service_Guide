@@ -1,0 +1,53 @@
+- 1 pod includes all containers
+- each container includes 1 service
+- each container will include at least : 
+> 1 Dockerfile with : 
+FROM
+Maintainer
+RUN ...
+ADD/COPY config files
+CMD sh install.sh
+> 1 install.sh files with : 
+START Service
+mv config files in containers
+> necessary config files
+
+> To build and run one docker container independently
+. go to directory
+. docker build -f Dockerfile .
+. check docker images for new one
+. docker tag if needed
+. docker create imagerep:imagetag
+. use docker run && docker exec 
+
+To see how files are maintained :
+_ Check your container Minikube with cmd
+. docker ps
+. docker exec -it containerid bash
+_ Check pods with cmd
+. kubectl get pods #but don't we need to have just 1 pod ???
+. kubectl exec -ti containername bash
+
+To get events history :
+kubectl get events
+To get informations about deployments :
+kubectl describe deployments <service-name>
+To see ports used in the VM :
+sudo lsof -i -P -n | grep LISTEN
+To see ports used by Kubernetes : 
+kubectl cluster-info
+To debug nodes : 
+kubectl get nodes
+kubectl cluster-info dump
+
+To make room : 
+minikube ssh -- docker system prune
+
+Assurez vous que les redirections vers les différents services se sont bien via un loadbalancer. 
+. FTPS, Grafana et Nginx, phpMyAdmin et Wordpress doivent etre du type"LoadBalancer". 
+. Influxdb et Mysql devront être de type "ClusterIP". 
+D’autres entrées peuvent être présentes, mais aucune ne doit etre du type "NodePort"
+
+// REFERENCES
+- Super tuto génériue de 42 :
+https://github.com/t0mm4rx/ft_services
