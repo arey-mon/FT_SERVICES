@@ -1,4 +1,5 @@
 echo "BUILDING IMAGES"
+#asking for password
 docker build -t nginx srcs/nginx/
 docker build -t php srcs/php/
 
