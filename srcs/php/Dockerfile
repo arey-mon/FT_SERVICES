@@ -13,9 +13,10 @@ RUN wget http://files.directadmin.com/services/all/phpMyAdmin/phpMyAdmin-5.0.2-a
 && rm phpMyAdmin-5.0.2-all-languages.tar.gz
 
 RUN mkdir -p /var/www/localhost/phpmyadmin/
+#don't work, does not exist in pod
 
 COPY config.inc.php /tmp
-COPY install.sh /tmp
+## is not in pod
 
 EXPOSE 5000
 

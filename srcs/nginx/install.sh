@@ -1,3 +1,6 @@
 echo "nginx starts services"
-nginx -g daemon off;
+echo "SSH";
+/usr/sbin/sshd
+rc-status
+nginx -g 'daemon off;'
 #run telegraf

@@ -8,7 +8,6 @@ spec:
   type: LoadBalancer #type NodePort interdit
   ports:
   - port: 5000
-    #nodePort: 5000 #should not be used
     targetPort: 5000
     protocol: TCP
     name: http
