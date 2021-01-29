@@ -15,4 +15,9 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/certs/v
 
 EXPOSE 21 21000-21010
 
-CMD sh ./install.sh
+COPY ./install.sh .
+CMD ["sh", "./install.sh"]
+
+#if "docker run"
+# you get freeze
+# even EOF does not work
