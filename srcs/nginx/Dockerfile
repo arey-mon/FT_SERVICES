@@ -23,7 +23,8 @@ RUN mkdir -p /run/nginx
 EXPOSE 22 80 443
 
 COPY ./install.sh .
-CMD ["sh", "./install.sh"]
+#CMD ["sh", "./install.sh"]
+ENTRYPOINT ["./install.sh"]
 
 # if "docker run"
 # nginx starts services

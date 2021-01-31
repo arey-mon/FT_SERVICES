@@ -3,6 +3,7 @@ minikube start --driver=docker
 eval $(minikube docker-env)
 minikube -p minikube docker-env
 minikube addons enable metrics-server
+minikube addons enable metallb
 minikube addons enable dashboard
 
 #SSH log _ mp
@@ -23,14 +24,12 @@ echo "BUILDING IMAGES"
 #asking for password
 docker build -t nginx srcs/nginx/
 docker build -t php srcs/php/
-docker build -t php srcs/mysql/
-docker build -t php srcs/ftps/
+docker build -t mysql srcs/mysql/
+docker build -t ftps srcs/ftps/
 
 #echo "CREATING POD"
 #kubectl create -f srcs/
 
 echo "DEPLOYMENT & LAUNCH"
 kubectl apply -f srcs/
-
-#DELETE TMP
 

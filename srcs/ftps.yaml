@@ -38,7 +38,7 @@ spec:
       containers:
       - name: ftps-deployment
         image: alpine_ftps
-        imagePullPolicy: Never
+        imagePullPolicy: IfNotPresent
         #  env:
         #- name: USER
         #value: admin

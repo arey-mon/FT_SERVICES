@@ -29,7 +29,7 @@ $i++;
 $cfg['Servers'][$i]['auth_type'] = 'cookie';
 $cfg['Servers'][$i]['AllowNoPassword'] = true;
 /* Server parameters */
-$cfg['Servers'][$i]['host'] = "mysql-service";
+$cfg['Servers'][$i]['host'] = "mysql";
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['port'] = "3306";
 $cfg['Servers'][$i]['user'] = "user";

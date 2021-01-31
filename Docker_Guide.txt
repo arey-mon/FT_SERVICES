@@ -18,29 +18,17 @@ __ when changes
 Commandes : 
 
 docker build - < Dockerfile
-$ docker images                     // To view install images
-$ docker rmi <IMAGE_NAME>           // To remove an installed image
-
-$ docker ps -a                      // To view all docker containers
 $ docker stop <CONTAINER_NAME>      // To stop a docker container
 $ docker rm <CONTAINER_NAME>        // To remove a docker container
-
 $ docker exec -it <CONTAINER_NAME> bash    // Execute into container and run bash
 $ docker start mynginx1
 
-[ Should be the two only needed
-Docker build
-Docker run
-]
-
-lbastian(s’ouvre dans un nouvel onglet)  11 h 41
 docker stop $(docker ps -q)
 docker rm $(docker ps -a -q)
 docker rmi $(docker images -q)
 /usr/sbin/nginx -s reload >> reload nains and apply new changes
 
 Id Pb : 
-Docker ps to see containers // ps -a to see not running
 pkill to remove nginx hostings
 Entrer dans le container >> docker exec -it 027 bash 		//027 being nains container ID beginning
 
@@ -78,7 +66,7 @@ Enter MySQL
 	GRANT ALL ON wordpress.* TO 'wordpressuser'@'localhost' IDENTIFIED BY 'mysqlpassword' WITH GRANT OPTION;
 	FLUSH PRIVILEGES;
 EXIT;
-
+__
 THEN exec -it dir /bin/bash/ && follow the steps below
 //with kubernets change /bin/bash/ to bash
 https://www.nginx.com/blog/installing-wordpress-with-nginx-unit/
@@ -88,9 +76,6 @@ https://deliciousbrains.com/ssl-certificate-authority-for-local-https-developmen
 	MP = myCA.key
 	Common Name (e.g. server FQDN or YOUR name) []:TILTER
 
-KUBERNETS
-- learn about deployment.yaml : https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment/
-- learn about exec & pods : https://gist.github.com/tariq1890/24cfc8b6af56248a811bf73cdcfe8987
 
 mymy // myblog && myblog
 apocool

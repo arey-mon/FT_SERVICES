@@ -8,4 +8,5 @@ RUN apk add mysql mysql-client
 EXPOSE 3306
 
 COPY ./install.sh .
-CMD ["sh", "./install.sh"]
+#CMD ["sh", "./install.sh"]
+CMD ./install.sh

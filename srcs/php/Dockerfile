@@ -13,11 +13,12 @@ RUN wget http://files.directadmin.com/services/all/phpMyAdmin/phpMyAdmin-5.0.2-a
 && rm phpMyAdmin-5.0.2-all-languages.tar.gz
 
 RUN mkdir -p /var/www/localhost/phpmyadmin/
-#don't work, does not exist in pod
+#does not exist in pod but OK in container
 
-COPY config.inc.php /tmp
-## is not in pod
+COPY ./config.inc.php /tmp
+## is not in pod nor but OK in container
 
 EXPOSE 5000
-
-CMD sh ./install.sh
+COPY ./install.sh ./
+#CMD sh install.sh #for containers only tests
+CMD ["sh", "install.sh"]

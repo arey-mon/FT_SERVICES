@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
         - name: phpmyadmin
-          image: phpmyadmin/phpmyadmin
+          image: phpmyadmin
           ports:
             - containerPort: 5000
           env:
