@@ -16,7 +16,7 @@ RUN mkdir -p /var/www/localhost/phpmyadmin/
 #does not exist in pod but OK in container
 
 COPY ./config.inc.php /tmp
-## is not in pod nor but OK in container
+## is not in pod but OK in container
 
 EXPOSE 5000
 COPY ./install.sh ./

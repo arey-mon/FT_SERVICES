@@ -34,7 +34,6 @@ $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['port'] = "3306";
 $cfg['Servers'][$i]['user'] = "user";
 $cfg['Servers'][$i]['password'] = "password";
-
 /**
  * phpMyAdmin configuration storage settings.
  */

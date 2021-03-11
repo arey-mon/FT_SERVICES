@@ -1,0 +1,85 @@
+#####INDENTATION PROBLEMS
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: mysql
+#  - labels:
+#    app: mysql
+#spec:
+#  type: ClusterIP #exception
+#  ports:
+#  - port: 3306
+#    targetPort: 3306
+#    protocol: TCP
+#    name: mysql
+#  selector:
+#    app: mysql
+--- 
+apiVersion: v1
+kind: Service
+metadata: 
+  - 
+    name: mysql
+  - 
+    app: mysql
+    labels: ~
+spec: 
+  ports: 
+    - 
+      name: mysql
+      port: 3306
+      protocol: TCP
+      targetPort: 3306
+  selector: 
+    app: mysql
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvm
+  - labels:
+    app: mysql
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  labels:
+    app: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql
+        imagePullPolicy: IfNotPresent
+        #### ADDED THIS ENV BELOW
+        env:
+          # Use secret in prod use cases
+      - name: MYSQL_ROOT_PASSWORD
+          value: password
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql #-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql #-storage
+        persistentVolumeClaim:
+        claimName: mysql-pvm

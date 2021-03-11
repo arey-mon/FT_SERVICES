@@ -19,7 +19,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mysql
+  name: mysql-pvm
   labels:
     app: mysql
 spec:
@@ -27,7 +27,7 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi
+      storage: 1Gi
 
 ---
 apiVersion: apps/v1
@@ -48,7 +48,41 @@ spec:
       containers:
       - name: mysql
         image: mysql
-        imagePullPolicy: Never
+        imagePullPolicy: IfNotPresent
+        #env:
+        #- name: MYSQL_ROOT_PASSWORD
+        #  value: password
+        #- name: MYSQL_DATABASE
+        #  value: wordpress
+        #- name: MYSQL_USER
+        #  value: admin
+        #- name: MYSQL_PASS
+        #  value: admin
+        #env:
+        #- name: DB_NAME
+        #  valueFrom:
+        #    secretKeyRef:
+        #      name: password
+        #      key: name
+        #- name: DB_USER
+        #  valueFrom:
+        #    secretKeyRef:
+        #      name: password
+        #      key: user
+        #- name: DB_PASSWORD
+        #  valueFrom:
+        #    secretKeyRef:
+        #      name: password
+        #      key: password
+        #- name: DB_HOST
+        #  valueFrom:
+        #    secretKeyRef:
+        #      name: password
+        #      key: host
+        env:
+        # Use secret in prod use cases
+          - name: MYSQL_ROOT_PASSWORD
+            value: mysql-pass #password
         ports:
         - containerPort: 3306
           name: mysql

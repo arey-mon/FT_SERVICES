@@ -42,6 +42,8 @@ spec:
               value: "3306"
             - name: PMA_USER
               value : root
+              #- name: PMA_PASS #
+              #value : admin #
               #valueFrom: #blocks 3306 overwrite
               # secretKeyRef:
               #    name: mysql-secrets
